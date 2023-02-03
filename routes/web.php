@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController as H;
+use App\Http\Controllers\CountryController as C;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,21 +22,21 @@ Route::get('/', function () {
 
 
 Route::prefix('admin/countries')->name('countries-')->group(function () {
-    Route::get('/', [T::class, 'index'])->name('index');
-    Route::get('/create', [T::class, 'create'])->name('create');
-    Route::post('/create', [T::class, 'store'])->name('store');
-    Route::get('/edit/{type}', [T::class, 'edit'])->name('edit');
-    Route::put('/edit/{type}', [T::class, 'update'])->name('update');
-    Route::delete('/delete/{type}', [T::class, 'destroy'])->name('delete');
+    Route::get('/', [C::class, 'index'])->name('index');
+    Route::get('/create', [C::class, 'create'])->name('create');
+    Route::post('/create', [C::class, 'store'])->name('store');
+    Route::get('/edit/{type}', [C::class, 'edit'])->name('edit');
+    Route::put('/edit/{type}', [C::class, 'update'])->name('update');
+    Route::delete('/delete/{type}', [C::class, 'destroy'])->name('delete');
 });
 
 Route::prefix('admin/hotels')->name('hotels-')->group(function () {
-    Route::get('/', [T::class, 'index'])->name('index');
-    Route::get('/create', [T::class, 'create'])->name('create');
-    Route::post('/create', [T::class, 'store'])->name('store');
-    Route::get('/edit/{type}', [T::class, 'edit'])->name('edit');
-    Route::put('/edit/{type}', [T::class, 'update'])->name('update');
-    Route::delete('/delete/{type}', [T::class, 'destroy'])->name('delete');
+    Route::get('/', [H::class, 'index'])->name('index');
+    Route::get('/create', [H::class, 'create'])->name('create');
+    Route::post('/create', [H::class, 'store'])->name('store');
+    Route::get('/edit/{type}', [H::class, 'edit'])->name('edit');
+    Route::put('/edit/{type}', [H::class, 'update'])->name('update');
+    Route::delete('/delete/{type}', [H::class, 'destroy'])->name('delete');
 });
 
 

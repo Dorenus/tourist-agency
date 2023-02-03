@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('hotels', function (Blueprint $table) {
             $table->id();
+            $table->string('country');
+            $table->string('title');
+            $table->decimal('price', 5, 2)->unsigned();
+            $table->string('photo', 200)->nullable();
+            $table->mediumInteger('length')->unsigned();
             $table->timestamps();
         });
     }

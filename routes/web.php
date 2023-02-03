@@ -25,9 +25,9 @@ Route::prefix('admin/hotels')->name('hotels-')->group(function () {
     Route::get('/', [H::class, 'index'])->name('index');
     Route::get('/create', [H::class, 'create'])->name('create');
     Route::post('/create', [H::class, 'store'])->name('store');
-    Route::get('/edit/{type}', [H::class, 'edit'])->name('edit');
-    Route::put('/edit/{type}', [H::class, 'update'])->name('update');
-    Route::delete('/delete/{type}', [H::class, 'destroy'])->name('delete');
+    Route::get('/edit/{hotel}', [H::class, 'edit'])->name('edit');
+    Route::put('/edit/{hotel}', [H::class, 'update'])->name('update');
+    Route::delete('/delete/{hotel}', [H::class, 'destroy'])->name('delete');
 });
 
 

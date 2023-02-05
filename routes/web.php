@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController as H;
+use App\Http\Controllers\HotelController as H;
 use App\Http\Controllers\CountryController as C;
 
 

@@ -3,16 +3,10 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <h1>All Countries</h1>
-                </div>
-                <div>
-                    <a href="{{route('countries-store')}}"><button class="btn btn-outline-primary m-2 p-2">Add country </button></a>
-
-
-
                 </div>
                 <div class="card-body">
                     <ul class="list-group">
@@ -23,14 +17,19 @@
                                     <h3>{{$country->title}}</h3>
                                     <h5>{{$country->season}}</h5>
 
+
+
+                                    <div class="count">[{{$country->countryHotels()->count()}}]</div>
                                 </div>
                                 <div class="list-table__buttons">
+                                    {{-- @if(Auth::user()?->role == 'admin') --}}
                                     <a href="{{route('countries-edit', $country)}}" class="btn btn-outline-success">Edit</a>
                                     <form action="{{route('countries-delete', $country)}}" method="post">
                                         <button type="submit" class="btn btn-outline-danger">Delete</button>
                                         @csrf
                                         @method('delete')
                                     </form>
+
                                 </div>
                             </div>
                         </li>

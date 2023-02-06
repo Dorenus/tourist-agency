@@ -23,7 +23,7 @@ Route::prefix('admin/countries')->name('countries-')->group(function () {
 
 Route::prefix('admin/hotels')->name('hotels-')->group(function () {
     Route::get('/', [H::class, 'index'])->name('index');
-    Route::get('/create', [H::class, 'create'])->name('create');
+    Route::get('/create', [H::class, 'create'])->name('create')->middleware('roles:A|M|C');
     Route::post('/create', [H::class, 'store'])->name('store');
     Route::get('/edit/{hotel}', [H::class, 'edit'])->name('edit');
     Route::put('/edit/{hotel}', [H::class, 'update'])->name('update');

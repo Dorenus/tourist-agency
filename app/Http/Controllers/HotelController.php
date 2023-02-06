@@ -157,7 +157,7 @@ class HotelController extends Controller
         
         if ($request->delete_photo) {
             $hotel->deletePhoto();
-            return redirect()->back()->with('okphoto', 'Photo was deleted');
+            return redirect()->back()->with('ok', 'Photo was deleted');
         }
        
          
@@ -229,7 +229,7 @@ class HotelController extends Controller
 
         $hotel->save();
 
-        return redirect()->route('hotels-index')->with('edith', 'Hotel was edited');
+        return redirect()->route('hotels-index')->with('ok', 'Hotel was edited');
     }
 
     /**

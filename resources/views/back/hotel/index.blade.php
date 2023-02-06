@@ -115,30 +115,30 @@
                     <div class="price"> {{$hotel->price}}Eur</div>
                     <div class="type"> {{$hotel->hotelsCountry->title}}</div>
 
-                    {{-- <div class="smallimg">
-                                    @if($drink->photo)
-                                    <img src="{{asset($drink->photo)}}">
-                    @endif
-                </div> --}}
+                    <div class="smallimg">
+                        @if($hotel->photo)
+                        <img src="{{asset($hotel->photo)}}">
+                        @endif
+                    </div>
 
+                </div>
+                <div class="list-table__buttons">
+                    {{-- <a href="{{route('hotels-show', $drink)}}" class="btn btn-outline-primary">Show</a> --}}
+                    <a href="{{route('hotels-edit', $hotel)}}" class="btn btn-outline-success">Edit</a>
+                    {{-- @if(Auth::user()?->role == 'admin') --}}
+                    <form action="{{route('hotels-delete', $hotel)}}" method="post">
+                        <button type="submit" class="btn btn-outline-danger">Delete</button>
+                        @csrf
+                        @method('delete')
+                    </form>
+                    {{-- @endif --}}
+                </div>
             </div>
-            <div class="list-table__buttons">
-                {{-- <a href="{{route('hotels-show', $drink)}}" class="btn btn-outline-primary">Show</a> --}}
-                <a href="{{route('hotels-edit', $hotel)}}" class="btn btn-outline-success">Edit</a>
-                {{-- @if(Auth::user()?->role == 'admin') --}}
-                <form action="{{route('hotels-delete', $hotel)}}" method="post">
-                    <button type="submit" class="btn btn-outline-danger">Delete</button>
-                    @csrf
-                    @method('delete')
-                </form>
-                {{-- @endif --}}
-            </div>
-</div>
-</li>
-@empty
-<li class="list-group-item">No hotels yet</li>
-@endforelse
-</ul>
+        </li>
+        @empty
+        <li class="list-group-item">No hotels yet</li>
+        @endforelse
+    </ul>
 </div>
 </div>
 {{-- @if($perPageShow != 'all')

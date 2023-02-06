@@ -155,12 +155,12 @@ class HotelController extends Controller
      public function update(Request $request, Hotel $hotel)
     {
         
-        // if ($request->delete_photo) {
-        //     $drink->deletePhoto();
-        //     return redirect()->back()->with('ok', 'Photo was deleted');
-        // }
+        if ($request->delete_photo) {
+            $hotel->deletePhoto();
+            return redirect()->back()->with('okphoto', 'Photo was deleted');
+        }
        
-        
+         
             $validator = Validator::make(
             $request->all(),
             [
@@ -180,6 +180,28 @@ class HotelController extends Controller
         // $type = Type::find($request->type_id);
         // $vol = $type->is_alk ? $request->drink_vol : null;
 
+        
+         if ($request->file('photo')) {
+            $photo = $request->file('photo');
+
+            // dd($photo);
+
+            $ext = $photo->getClientOriginalExtension();
+            $name = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
+            $file = $name. '-' . rand(100000, 999999). '.' . $ext;
+            
+            // $Image = Image::make($photo)->pixelate(12);
+            // $Image->save(public_path().'/trucks/'.$file);
+
+            $photo->move(public_path().'/hotels', $file);
+
+            $hotel->photo = '/hotels/' . $file;
+
+            // $hotel->photo = asset('/hotels/') . '/' . $file;
+
+            // $hotel->photo = "any text";
+
+        }
         // if ($request->file('photo')) {
         //     $photo = $request->file('photo');
 
@@ -202,7 +224,7 @@ class HotelController extends Controller
         $hotel->country_id = $request->country_id;
         $hotel->length = $request->length;
         $hotel->price = $request->price;
-        $hotel->photo = $request->photo;
+        // $hotel->photo = $request->photo;
      
 
         $hotel->save();

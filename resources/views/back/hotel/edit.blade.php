@@ -59,31 +59,31 @@
                             </div>
                         </div>
 
-                        {{-- @if($drink->photo)
-                                <div class="col-4">
-                                    <div class="mb-3 img">
-                                        <img src="{{asset($drink->photo)}}">
-                </div>
-            </div>
-            @endif --}}
+                        @if($hotel->photo)
+                        <div class="col-6">
+                            <div class="mb-3 img">
+                                <img src="{{asset($hotel->photo)}}">
+                            </div>
+                        </div>
+                        @endif
 
-            {{-- <div class="col-8">
+                        {{-- <div class="col-8">
                                     <div class="mb-3">
                                         <label class="form-label">Drink description</label>
                                         <textarea class="form-control" rows="10" name="drink_desc">{{old('drink_desc', $drink->desc)}}</textarea>
+                </div>
+            </div> --}}
+
+
         </div>
-    </div> --}}
-
-
-</div>
-</div>
-<button type="submit" class="btn btn-outline-primary">Save</button>
-{{-- @if($drink->photo)
-                        <button type="submit" class="btn btn-outline-danger" name="delete_photo" value="1">Delete Photo</button>
-                        @endif --}}
-@csrf
-@method('put')
-</form>
+    </div>
+    <button type="submit" class="btn btn-outline-primary">Save</button>
+    @if($hotel->photo)
+    <button type="submit" class="btn btn-outline-danger" name="delete_photo" value="1">Delete Photo</button>
+    @endif
+    @csrf
+    @method('put')
+    </form>
 
 
 

@@ -14,12 +14,12 @@
                         <li class="list-group-item">
                             <div class="list-table">
                                 <div class="list-table__content">
-                                    <h3>{{$country->title}}</h3>
-                                    <h5>{{$country->season}}</h5>
-
-
-
                                     <div class="count">[{{$country->countryHotels()->count()}}]</div>
+                                    <h3>{{$country->title}}</h3>
+                                    <h3>{{$country->season}}</h3>
+
+
+
                                 </div>
                                 <div class="list-table__buttons">
                                     {{-- @if(Auth::user()?->role == 'admin') --}}

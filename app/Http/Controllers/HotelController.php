@@ -12,12 +12,52 @@ class HotelController extends Controller
 {
 
 
-    public function index()
+    public function index(Request $request)
     {
-        $hotels = Hotel::all()->sortBy('title');
+ 
+
+        $hotels = match($request->sort ?? '') {
+                'asc_title' => Hotel::orderBy('title'),
+                'desc_title' => Hotel::orderBy('title', 'desc'),
+                'asc_price' => Hotel::orderBy('price'),
+                'desc_price' => Hotel::orderBy('price', 'desc'),
+                'asc_length' => Hotel::orderBy('length'),
+                'desc_length' => Hotel::orderBy('length', 'desc'),
+                default => Hotel::where('id', '>', 0)
+            };
+        
+            $hotels = $hotels->get();
+
+
+
+        //  $hotels= Hotel::all();
+
+        //  $hotels = match($request->sort ?? '') {
+        //         'asc_title' => $hotels->orderBy('title'),
+        //         'desc_title' => $hotels->orderBy('title', 'desc'),
+        //         'asc_price' => $hotels->orderBy('price'),
+        //         'desc_price' => $hotels->orderBy('size', 'desc'),
+        //         default => $hotels
+        //     };
+        
+        // $hotels = $hotels->get();
+
+
+        // $hotels = Hotel::all()->sortBy('title');
+        // $hotels = Hotel::all();
+
+
         return view('back.hotel.index', [
-            'hotels' => $hotels
+            'hotels' => $hotels,
+            'sortSelect' => Hotel::SORT,
+            'sortShow' => isset(Hotel::SORT[$request->sort]) ? $request->sort : '',
+            // 'perPageSelect' => Drink::PER_PAGE,
+            // 'perPageShow' => $perPageShow,
+            // 'types' => $types,
+            // 'typeShow' => $request->type_id ? $request->type_id : '',
+            // 's' => $request->s ?? ''
         ]);
+
     }
 
     public function create()

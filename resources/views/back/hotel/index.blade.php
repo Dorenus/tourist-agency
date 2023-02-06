@@ -12,7 +12,28 @@
                                 <div class="col-4">
                                     <h1>List of all hotels</h1>
                                 </div>
+
+
+                                <div class="col-2">
+                                    <div class="mb-3">
+                                        <label class="form-label">Sort by</label>
+                                        <select class="form-select" name="sort">
+                                            {{-- <option>default</option> --}}
+                                            @foreach($sortSelect as $value => $name)
+                                            <option value="{{$value}}" @if($sortShow==$value) selected @endif>{{$name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="head-buttons">
+                                        <button type="submit" class="btn btn-outline-primary mt-3">Show</button>
+                                        <a href="{{route('hotels-index')}}" class="btn btn-outline-info mt-3">Reset</a>
+                                    </div>
+                                </div>
                     </form>
+
+
                     {{-- <div class="col-2">
                                     <div class="mb-3">
                                         <label class="form-label">Sort by</label>

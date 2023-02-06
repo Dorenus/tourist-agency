@@ -95,21 +95,27 @@ class HotelController extends Controller
         $hotel = new Hotel;
 
 
-        // if ($request->file('photo')) {
-        //     $photo = $request->file('photo');
+        if ($request->file('photo')) {
+            $photo = $request->file('photo');
 
-        //     $ext = $photo->getClientOriginalExtension();
-        //     $name = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
-        //     $file = $name. '-' . rand(100000, 999999). '.' . $ext;
+            // dd($photo);
+
+            $ext = $photo->getClientOriginalExtension();
+            $name = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
+            $file = $name. '-' . rand(100000, 999999). '.' . $ext;
             
-        //     // $Image = Image::make($photo)->pixelate(12);
-        //     // $Image->save(public_path().'/trucks/'.$file);
+            // $Image = Image::make($photo)->pixelate(12);
+            // $Image->save(public_path().'/trucks/'.$file);
 
-        //     $photo->move(public_path().'/drinks', $file);
+            $photo->move(public_path().'/hotels', $file);
 
-        //     $drink->photo = '/drinks/' . $file;
+            $hotel->photo = '/hotels/' . $file;
 
-        // }
+            // $hotel->photo = asset('/hotels/') . '/' . $file;
+
+            // $hotel->photo = "any text";
+
+        }
 
     
 
@@ -120,7 +126,7 @@ class HotelController extends Controller
         $hotel->country_id = $request->country_id;
         $hotel->length = $request->length;
         $hotel->price = $request->price;
-        $hotel->photo = $request->photo;
+        // $hotel->photo = $request->photo;
 
         $hotel->save();
 

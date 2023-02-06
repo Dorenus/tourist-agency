@@ -6,13 +6,8 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <form action="{{route('hotels-index')}}" method="get">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-4">
-                                    <h1>List of all hotels</h1>
-                                </div>
-                    </form>
+
+
                     {{-- <div class="col-2">
                                     <div class="mb-3">
                                         <label class="form-label">Sort by</label>

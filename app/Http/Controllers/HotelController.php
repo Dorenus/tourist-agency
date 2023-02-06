@@ -36,20 +36,21 @@ class HotelController extends Controller
     {
 
         
-        // $validator = Validator::make(
-        //     $request->all(),
-        //     [
-        //     'drink_title' => 'required|alpha|min:3|max:100|regex:/^T/',
-        //     'drink_size' => 'required|min:1|max:9999',
-        //     'drink_price' => 'required|decimal:0,2|min:0|max:999',
-        //     'type_id' => 'required|numeric|min:1',
-        //     'drink_vol' => 'sometimes|decimal:0,1|min:1|max:99',
-        //     ]);
+        $validator = Validator::make(
+            $request->all(),
+            [
+            'title' => 'required|alpha|min:3|max:100|',
+            'length' => 'required|numeric|min:1|max:9999',
+            'price' => 'required|decimal:0,2|min:0|max:99999',
+            // 'country_id' => 'required|alpha|min:3|max:100|',
+            // 'country_id' => 'required|numeric|min:1',
+            // 'drink_vol' => 'sometimes|decimal:0,1|min:1|max:99',
+            ]);
 
-        //     if ($validator->fails()) {
-        //         $request->flash();
-        //         return redirect()->back()->withErrors($validator);
-        //     }
+            if ($validator->fails()) {
+                $request->flash();
+                return redirect()->back()->withErrors($validator);
+            }
         
         $hotel = new Hotel;
 
@@ -83,7 +84,7 @@ class HotelController extends Controller
 
         $hotel->save();
 
-        return redirect()->route('hotels-index')->with('ok', 'New hotel was created');
+        return redirect()->route('hotels-index')->with('okh', 'New hotel was added');
 
     }
 
@@ -114,20 +115,21 @@ class HotelController extends Controller
         // }
        
         
-        // $validator = Validator::make(
-        //     $request->all(),
-        //     [
-        //     'drink_title' => 'required|min:3|max:100',
-        //     'drink_size' => 'required|min:1|max:9999',
-        //     'drink_price' => 'required|decimal:0,2|min:0|max:999',
-        //     'type_id' => 'required|numeric|min:1',
-        //     'drink_vol' => 'sometimes|decimal:0,1|min:1|max:99',
-        //     ]);
+            $validator = Validator::make(
+            $request->all(),
+            [
+            'title' => 'required|alpha|min:3|max:100|',
+            'length' => 'required|numeric|min:1|max:9999',
+            'price' => 'required|decimal:0,2|min:0|max:99999',
+            // 'country_id' => 'required|alpha|min:3|max:100|',
+            // 'country_id' => 'required|numeric|min:1',
+            // 'drink_vol' => 'sometimes|decimal:0,1|min:1|max:99',
+            ]);
 
-        //     if ($validator->fails()) {
-        //         $request->flash();
-        //         return redirect()->back()->withErrors($validator);
-        //     }
+            if ($validator->fails()) {
+                $request->flash();
+                return redirect()->back()->withErrors($validator);
+            }
 
         // $type = Type::find($request->type_id);
         // $vol = $type->is_alk ? $request->drink_vol : null;
@@ -159,7 +161,7 @@ class HotelController extends Controller
 
         $hotel->save();
 
-        return redirect()->route('hotels-index')->with('ok', 'Hotel was edited');
+        return redirect()->route('hotels-index')->with('edith', 'Hotel was edited');
     }
 
     /**
@@ -171,6 +173,6 @@ class HotelController extends Controller
     public function destroy(Hotel $hotel)
     {
         $hotel->delete();
-        return redirect()->back()->with('ok', 'Hotel was deleted');
+        return redirect()->back()->with('delh', 'Hotel was deleted');
     }
 }

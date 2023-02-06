@@ -26,12 +26,26 @@ class CountryController extends Controller
     public function store(Request $request)
     {
         
+         $validator = Validator::make(
+            $request->all(),
+            [
+            'title' => 'required|min:4|max:100',
+            'season' => 'required|min:5|max:100',
+            ]);
+
+            if ($validator->fails()) {
+                $request->flash();
+                return redirect()->back()->withErrors($validator);
+            }
+
+
+
         $country = new Country;
         $country->title = $request->title;
         $country->season = $request->season;
         $country->save();
 
-        return redirect()->route('countries-index');
+        return redirect()->route('countries-index')->with('add', 'Country was added');
     }
 
     public function edit(Country $country)
@@ -44,6 +58,20 @@ class CountryController extends Controller
     public function update(Request $request, Country $country)
     {
         
+        $validator = Validator::make(
+            $request->all(),
+            [
+            'title' => 'required|min:4|max:100',
+            'season' => 'required|min:5|max:100',
+            ]);
+
+            if ($validator->fails()) {
+                $request->flash();
+                return redirect()->back()->withErrors($validator);
+            }
+
+
+
         $country->title = $request->title;
         $country->season = $request->season;
         $country->save();
@@ -56,7 +84,7 @@ class CountryController extends Controller
 
         $country->delete();
         
-        return redirect()->route('countries-index')->with('not', 'Country deleted');
+        return redirect()->route('countries-index')->with('not', 'Country was deleted');
                 // return redirect()->back()->with('not', 'Type has drinks.');
     }
 }

@@ -57,8 +57,9 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('countries-index') }}">Countries List</a>
-                                {{-- @if(Auth::user()?->role == 'admin') --}}
+                                @if(Auth::user()?->role == 'admin')
                                 <a class="dropdown-item" href="{{ route('countries-create') }}">New country</a>
+                                @endif
 
                             </div>
                         </li>
@@ -69,9 +70,9 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('hotels-index') }}">Hotels List</a>
-                                {{-- {{-- @if(Auth::user()?->role == 'admin') --}}
+                                @if(Auth::user()?->role == 'admin')
                                 <a class="dropdown-item" href="{{ route('hotels-create') }}">New Hotel</a>
-                                {{-- @endif --}}
+                                @endif
                             </div>
                         </li>
 

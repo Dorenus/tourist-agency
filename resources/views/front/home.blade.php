@@ -32,7 +32,7 @@
                                 <div class="price"> {{$hotel->price}} Eur</div>
                                 <div class="type"> {{$hotel->hotelsCountry->title}}</div>
 
-                                <form action="{{route('hotels-index')}}" method="post">
+                                <form action="{{route('add-to-cart')}}" method="post">
                                     <button type="submit" class="btn btn-outline-primary">Add</button>
                                     <input type="number" min="1" name="count" value="1">
                                     <input type="hidden" name="product" value="{{$hotel->id}}">

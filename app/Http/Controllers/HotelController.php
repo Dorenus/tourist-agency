@@ -238,9 +238,15 @@ class HotelController extends Controller
      * @param  \App\Models\Drink  $drink
      * @return \Illuminate\Http\Response
      */
+
+    public function show(Hotel $hotel)
+    {
+        return view('back.hotel.show', ['hotel' => $hotel]);
+    }
+
     public function destroy(Hotel $hotel)
     {
         $hotel->delete();
-        return redirect()->back()->with('delh', 'Hotel was deleted');
+        return redirect()->back()->with('not', 'Hotel was deleted');
     }
 }

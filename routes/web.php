@@ -3,12 +3,24 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HotelController as H;
 use App\Http\Controllers\CountryController as C;
+use App\Http\Controllers\FrontController as F;
+use App\Http\Controllers\OrderController as O;
+
+
 
 
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+Route::get('/', [F::class, 'home'])->name('home');
+Route::get('/hotel/{hotel}', [F::class, 'showHotel'])->name('show-hotel');
+Route::get('/cat/{country}', [F::class, 'showCatHotels'])->name('show-cats-hotels');
+Route::post('/add-to-cart', [F::class, 'addToCart'])->name('add-to-cart');
+Route::get('/cart', [F::class, 'cart'])->name('cart');
+Route::post('/cart', [F::class, 'updateCart'])->name('update-cart');
+Route::post('/make-order', [F::class, 'makeOrder'])->name('make-order');
 
 
 
@@ -27,6 +39,7 @@ Route::prefix('admin/hotels')->name('hotels-')->group(function () {
     Route::post('/create', [H::class, 'store'])->name('store');
     Route::get('/edit/{hotel}', [H::class, 'edit'])->name('edit');
     Route::put('/edit/{hotel}', [H::class, 'update'])->name('update');
+    Route::get('/show/{hotel}', [H::class, 'show'])->name('show')->middleware('roles:A|M|C');
     Route::delete('/delete/{hotel}', [H::class, 'destroy'])->name('delete');
 });
 
@@ -37,3 +50,4 @@ Route::prefix('admin/hotels')->name('hotels-')->group(function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

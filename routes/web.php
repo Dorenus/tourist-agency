@@ -14,7 +14,7 @@ use App\Http\Controllers\OrderController as O;
 //     return view('welcome');
 // });
 
-Route::get('/', [F::class, 'home'])->name('home');
+Route::get('/', [F::class, 'home'])->name('start');
 Route::get('/hotel/{hotel}', [F::class, 'showHotel'])->name('show-hotel');
 Route::get('/cat/{country}', [F::class, 'showCatHotels'])->name('show-cats-hotels');
 Route::post('/add-to-cart', [F::class, 'addToCart'])->name('add-to-cart');

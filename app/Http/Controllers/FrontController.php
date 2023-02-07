@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Hotel;
 use App\Models\Country;
+use App\Models\Order;
+use App\Services\CartService;
+use Illuminate\Support\Facades\Auth;
 
 
 class FrontController extends Controller

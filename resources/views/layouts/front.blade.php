@@ -1,3 +1,4 @@
+@inject('cart', 'App\Services\CartService')
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -10,8 +11,9 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@300;400&family=Sarpanch:wght@400;900&display=swap" rel="stylesheet">
 
     <!-- Scripts -->
     @vite(['resources/sass/front/app.scss', 'resources/js/front/app.js'])
@@ -61,16 +63,37 @@
                                 </form>
                             </div>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a id="cartDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <div class="cart-svg">
+                                    <svg class="cart">
+                                        <use xlink:href="#cart"></use>
+                                    </svg>
+                                    <span class="count">{{$cart->count}}</span>
+                                    <span>{{$cart->total}} eur </span>
+                                </div>
+                            </a>
+                            <a href="{{route('cart')}}" class="dropdown-menu dropdown-menu-end" aria-labelledby="cartDropdown">
+                                @forelse($cart->list as $product)
+                                <div class="dropdown-item">
+                                    {{$product->title}}
+                                    <b>X</b> {{$product->count}} bt.
+                                    {{$product->sum}} eur
+                                </div>
+                                @empty
+                                <span class="dropdown-item">Empty</span>
+                                @endforelse
+                            </a>
+                        </li>
                         @endguest
                     </ul>
                 </div>
             </div>
         </nav>
-
         <main class="py-4">
-            {{-- @include('layouts.messages') --}}
             @yield('content')
         </main>
     </div>
+    @include('layouts.svg')
 </body>
 </html>

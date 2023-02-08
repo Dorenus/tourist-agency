@@ -46,7 +46,7 @@
 
                         </div>
                         @empty
-                        No drinks yet
+                        No hotels yet
                         @endforelse
 
                     </div>

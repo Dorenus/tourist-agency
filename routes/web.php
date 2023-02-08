@@ -43,7 +43,11 @@ Route::prefix('admin/hotels')->name('hotels-')->group(function () {
     Route::delete('/delete/{hotel}', [H::class, 'destroy'])->name('delete');
 });
 
-
+Route::prefix('admin/orders')->name('orders-')->group(function () {
+    Route::get('/', [O::class, 'index'])->name('index')->middleware('roles:A|M');
+    Route::put('/edit/{order}', [O::class, 'update'])->name('update')->middleware('roles:A');
+    Route::delete('/delete/{order}', [O::class, 'destroy'])->name('delete')->middleware('roles:A');
+});
 
 
 

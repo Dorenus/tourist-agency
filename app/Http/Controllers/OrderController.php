@@ -24,8 +24,8 @@ class OrderController extends Controller
             return $hotel;
         });
 
-        // dd($orders);
-        // die;
+        // dump($orders);
+        
         return view('back.orders.index', ['orders' => $orders]);
     }
 

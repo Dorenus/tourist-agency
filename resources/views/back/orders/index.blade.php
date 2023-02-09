@@ -19,35 +19,35 @@
                                     </h3>
 
                                     <i class="m-5">{{$order->hotels->total}} eur</i>
-                                    {{-- <ul class="list-group">
-                                        @foreach($order->hotels->hotels as $hotel)
+                                    <ul class="list-group">
+                                        @foreach($order->hotels->drinks as $hotel)
                                         <li class="list-group-item">
                                             {{$hotel->title}} X {{$hotel->count}}
+                                        </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                <div>
+                                    @if($order->status == 0)
+                                    <form action="{{route('orders-update', $order)}}" method="post" class="mt-2">
+                                        <button type="submit" class="btn btn-outline-primary">Finish Order</button>
+                                        @csrf
+                                        @method('put')
+                                    </form>
+                                    @endif
+                                    <form action="{{route('orders-delete', $order)}}" method="post" class="mt-2">
+                                        <button type="submit" class="btn btn-outline-danger">Delete Order</button>
+                                        @csrf
+                                        @method('delete')
+                                    </form>
+                                </div>
+                            </div>
                         </li>
                         @endforeach
-                    </ul> --}}
-                </div>
-                <div>
-                    @if($order->status == 0)
-                    <form action="{{route('orders-update', $order)}}" method="post" class="mt-2">
-                        <button type="submit" class="btn btn-outline-primary">Finish Order</button>
-                        @csrf
-                        @method('put')
-                    </form>
-                    @endif
-                    <form action="{{route('orders-delete', $order)}}" method="post" class="mt-2">
-                        <button type="submit" class="btn btn-outline-danger">Delete Order</button>
-                        @csrf
-                        @method('delete')
-                    </form>
+                    </ul>
                 </div>
             </div>
-            </li>
-            @endforeach
-            </ul>
         </div>
     </div>
-</div>
-</div>
 </div>
 @endsection

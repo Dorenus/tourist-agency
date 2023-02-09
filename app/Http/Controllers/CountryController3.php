@@ -6,22 +6,12 @@ use App\Models\Hotel;
 use App\Models\Country;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Carbon\Carbon;
 
 class CountryController extends Controller
 {
     public function index()
     {
         $countries = Country::all()->sortBy('title');
-
-        
-
-        $countries = $countries->map(function($t) {
-            $t->startNice = Carbon::parse($t->start)->format('F j, Y');
-            $t->endNice = Carbon::parse($t->end)->format('F j, Y');
-            return $t;
-        });
-
         return view('back.country.index', [
             'countries' => $countries
         ]);
@@ -36,42 +26,24 @@ class CountryController extends Controller
     public function store(Request $request)
     {
         
-        //  $validator = Validator::make(
-        //     $request->all(),
-        //     [
-        //     'title' => 'required|min:4|max:100',
-        //     'season' => 'required|min:5|max:100',
-        //     ]);
+         $validator = Validator::make(
+            $request->all(),
+            [
+            'title' => 'required|min:4|max:100',
+            'season' => 'required|min:5|max:100',
+            ]);
 
-        //     if ($validator->fails()) {
-        //         $request->flash();
-        //         return redirect()->back()->withErrors($validator);
-        //     }
+            if ($validator->fails()) {
+                $request->flash();
+                return redirect()->back()->withErrors($validator);
+            }
 
 
 
         $country = new Country;
         $country->title = $request->title;
         $country->season = $request->season;
-
-        
-        $start = Carbon::parse($request->start);
-        $end = Carbon::parse($request->start)->addDays($request->length);
-        
-        // $country = $country->map(function($t) {
-        //     $t->startNice = Carbon::parse($t->start)->format('F j, Y');
-        //     $t->endNice = Carbon::parse($t->end)->format('F j, Y');
-        //     return $t;
-        // });
-
-        Country::insert([
-            'title' => $request->title,
-            'season' => $request->season,
-            'start' => $start,
-            'end' => $end,
-        ]);
-
-        // $country->save();
+        $country->save();
 
         return redirect()->route('countries-index')->with('add', 'Country was added');
     }

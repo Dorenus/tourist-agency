@@ -28,6 +28,8 @@
                                     <div class="info">
                                         <div class="type"> {{$hotel->hotelsCountry->title}}</div>
                                         <div class="size"> {{$hotel->length}} days</div>
+                                        <span>From: {{$hotel->hotelsCountry->startNice}} To: {{$hotel->hotelsCountry->endNice}}</span>
+
                                     </div>
                                     <div class="buy">
                                         <div class="price"> {{$hotel->price}} Eur</div>

@@ -14,4 +14,9 @@ class Country extends Model
     {
         return $this->hasMany(Hotel::class, 'country_id', 'id');
     }
+
+    protected $casts = [
+        'start' => 'date',
+        'end' => 'date',
+    ];
 }

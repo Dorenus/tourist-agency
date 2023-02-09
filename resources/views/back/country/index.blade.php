@@ -18,6 +18,10 @@
                                     <h3>{{$country->title}}</h3>
                                     <h3>{{$country->season}}</h3>
 
+                                    <span>From: {{$country->startNice}} To: {{$country->endNice}}</span>
+
+
+
 
 
                                 </div>

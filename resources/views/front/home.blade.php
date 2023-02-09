@@ -31,6 +31,14 @@
                                 <div class="size"> {{$hotel->length}} days</div>
                                 <div class="price"> {{$hotel->price}} Eur</div>
                                 <div class="type"> {{$hotel->hotelsCountry->title}}</div>
+                                <div class="type">From: {{$hotel->hotelsCountry->start}}</div>
+                                <div class="type">To: {{$hotel->hotelsCountry->end}}</div>
+                                {{dd($hotel->hotelsCountry)}}
+
+
+                                {{-- <span>From: {{$hotel->hotelsCountry->start}} To: {{$hotel->hotelsCountry->end}}</span> --}}
+
+
 
                                 <form action="{{route('add-to-cart')}}" method="post">
                                     <button type="submit" class="btn btn-outline-primary">Add</button>

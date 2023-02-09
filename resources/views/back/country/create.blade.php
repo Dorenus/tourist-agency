@@ -23,6 +23,17 @@
                                 <input type="text" class="form-control" name="season">
                             </div> --}}
 
+                            <div class="mb-3">
+                                <label class="form-label">Season Start</label>
+                                <input type="date" class="form-control" name="start">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Season length</label>
+                                <input type="text" class="form-control" name="length">
+                            </div>
+
+                            <label class="form-label">Season name</label>
+
                             <select class="form-control" name="season">
                                 <option>Spring</option>
                                 <option>Summer</option>

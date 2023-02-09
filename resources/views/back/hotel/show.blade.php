@@ -6,28 +6,28 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h1>Show Hotels</h1>
+                    <h1>Show Hotel</h1>
                 </div>
                 <div class="card-body">
                     <div class="container">
                         <div class="row">
                             <div class="col-12">
                                 <div class="mb-3">
-                                    <label class="form-label">Hotel title</label>
+                                    <label class="form-label">Hotel name</label>
                                     {{$hotel->title}}
                                 </div>
                             </div>
 
                             <div class="col-12">
                                 <div class="mb-3">
-                                    <label class="form-label">Hotel type</label>
+                                    <label class="form-label">Country</label>
                                     {{$hotel->hotelsCountry?->title}}
                                 </div>
                             </div>
 
                             <div class="col-12">
                                 <div class="mb-3">
-                                    <label class="form-label">Stay length</label>
+                                    <label class="form-label">Vocation length</label>
                                     {{$hotel->length}} days
                                 </div>
                             </div>
@@ -39,11 +39,11 @@
                                 </div>
                             </div>
 
-                            {{-- @if($drink->vol)
+                            {{-- @if($hotel->vol)
                             <div class="col-12">
                                 <div class="mb-3">
                                     <label class="form-label">Drink VOL</label>
-                                    {{$drink->vol}} %
+                                    {{$hotel->vol}} %
                         </div>
                     </div>
                     @endif --}}
@@ -52,7 +52,7 @@
                                 <div class="mb-3">
                                     <label class="form-label">Drink description</label>
                                     <div>
-                                        {{$drink->desc}}
+                                        {{$hotel->desc}}
                 </div>
             </div>
         </div> --}}
@@ -66,7 +66,7 @@
         @endif
     </div>
 </div>
-{{-- <a href="{{route('drinks-pdf', $drink)}}" class="btn btn-outline-primary">Download PDF</a> --}}
+<a href="{{route('hotels-pdf', $hotel)}}" class="btn btn-outline-primary">Download PDF</a>
 </div>
 </div>
 </div>

@@ -59,7 +59,7 @@
 
                             </div>
                             <div class="list-table__buttons">
-                                {{-- <a href="{{route('hotels-show', $drink)}}" class="btn btn-outline-primary">Show</a> --}}
+                                <a href="{{route('hotels-show', $hotel)}}" class="btn btn-outline-primary">Show</a>
                                 <a href="{{route('hotels-edit', $hotel)}}" class="btn btn-outline-success">Edit</a>
                                 {{-- @if(Auth::user()?->role == 'admin') --}}
                                 <form action="{{route('hotels-delete', $hotel)}}" method="post">

@@ -41,6 +41,8 @@ Route::prefix('admin/hotels')->name('hotels-')->group(function () {
     Route::put('/edit/{hotel}', [H::class, 'update'])->name('update');
     Route::get('/show/{hotel}', [H::class, 'show'])->name('show')->middleware('roles:A|M|C');
     Route::delete('/delete/{hotel}', [H::class, 'destroy'])->name('delete');
+    Route::get('/show/{hotel}', [H::class, 'show'])->name('show')->middleware('roles:A|M|C');
+    Route::get('/pdf/{hotel}', [H::class, 'pdf'])->name('pdf')->middleware('roles:A|M|C');
 });
 
 Route::prefix('admin/orders')->name('orders-')->group(function () {

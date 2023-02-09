@@ -6,6 +6,9 @@ use App\Models\Hotel;
 use App\Models\Country;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Intervention\Image\ImageManager;
+
 
 class HotelController extends Controller
 
@@ -212,11 +215,11 @@ class HotelController extends Controller
         //     // $Image = Image::make($photo)->pixelate(12);
         //     // $Image->save(public_path().'/trucks/'.$file);
 
-        //     if ($drink->photo) {
-        //         $drink->deletePhoto();
+        //     if ($hotel->photo) {
+        //         $hotel->deletePhoto();
         //     }
         //     $photo->move(public_path().'/drinks', $file);
-        //     $drink->photo = '/drinks/' . $file;
+        //     $hotel->photo = '/drinks/' . $file;
         // }
 
         
@@ -235,7 +238,7 @@ class HotelController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Drink  $drink
+     * @param  \App\Models\Drink  $hotel
      * @return \Illuminate\Http\Response
      */
 
@@ -248,5 +251,11 @@ class HotelController extends Controller
     {
         $hotel->delete();
         return redirect()->back()->with('not', 'Hotel was deleted');
+    }
+
+    public function pdf(Hotel $hotel)
+    {
+        $pdf = Pdf::loadView('back.hotel.pdf', ['hotel' => $hotel]);
+        return $pdf->download($hotel->title.'.pdf');
     }
 }

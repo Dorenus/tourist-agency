@@ -22,7 +22,7 @@
 
                                 <div class="col-4">
                                     <div class="mb-3">
-                                        <label class="form-label">Drink type</label>
+                                        <label class="form-label">Country name</label>
                                         <select id="drink--create--edit" class="form-select" name="country_id">
                                             @foreach($countries as $country)
                                             <option value="{{$country->id}}" @if($country->id == old('country_id', $hotel->country_id)) selected @endif>{{$country->title}}</option>

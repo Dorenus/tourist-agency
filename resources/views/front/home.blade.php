@@ -39,6 +39,9 @@
                                 {{-- <span>From: {{$hotel->hotelsCountry->start}} To: {{$hotel->hotelsCountry->end}}</span> --}}
 
 
+                                @if(Auth::user()?->name)
+                                {{-- @if(Auth::user()?->role == 'admin') --}}
+
 
                                 <form action="{{route('add-to-cart')}}" method="post">
                                     <button type="submit" class="btn btn-outline-primary">Add</button>
@@ -46,6 +49,7 @@
                                     <input type="hidden" name="product" value="{{$hotel->id}}">
                                     @csrf
                                 </form>
+                                @endif
 
 
 

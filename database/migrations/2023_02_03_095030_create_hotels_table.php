@@ -22,6 +22,7 @@ return new class extends Migration
             $table->unsignedBigInteger('country_id');
             $table->foreign('country_id')->references('id')->on('countries');
             $table->timestamps();
+            // $table->text('desc')->nullable();
         });
     }
 

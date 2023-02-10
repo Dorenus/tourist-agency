@@ -129,6 +129,7 @@ class HotelController extends Controller
         $hotel->country_id = $request->country_id;
         $hotel->length = $request->length;
         $hotel->price = $request->price;
+        $hotel->desc = $request->hotel_desc;
         // $hotel->photo = $request->photo;
 
         $hotel->save();
@@ -228,6 +229,7 @@ class HotelController extends Controller
         $hotel->length = $request->length;
         $hotel->price = $request->price;
         // $hotel->photo = $request->photo;
+        $hotel->desc = $request->hotel_desc;
      
 
         $hotel->save();

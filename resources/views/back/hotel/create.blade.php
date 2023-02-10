@@ -59,20 +59,20 @@
                             </div>
                         </div>
 
-                        {{-- <div class="col-9">
-                                    <div class="mb-3">
-                                        <label class="form-label">Drink description</label>
-                                        <textarea class="form-control" rows="10" name="drink_desc">{{old('drink_desc')}}</textarea>
+                        <div class="col-9">
+                            <div class="mb-3">
+                                <label class="form-label">Hotel description</label>
+                                <textarea class="form-control" rows="5" name="hotel_desc">{{old('hotel_desc')}}</textarea>
+                            </div>
+                        </div>
                 </div>
-            </div> --}}
+            </div>
+
+            <button type="submit" class="btn btn-outline-primary">Add New</button>
+            @csrf
+            </form>
         </div>
     </div>
-
-    <button type="submit" class="btn btn-outline-primary">Add New</button>
-    @csrf
-    </form>
-</div>
-</div>
 </div>
 </div>
 </div>

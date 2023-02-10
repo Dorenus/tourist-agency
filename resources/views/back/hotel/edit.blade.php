@@ -67,28 +67,29 @@
                         </div>
                         @endif
 
-                        {{-- <div class="col-8">
-                                    <div class="mb-3">
-                                        <label class="form-label">Drink description</label>
-                                        <textarea class="form-control" rows="10" name="drink_desc">{{old('drink_desc', $drink->desc)}}</textarea>
+                        <div class="col-9">
+                            <div class="mb-3">
+                                <label class="form-label">Hotel description</label>
+                                <textarea class="form-control" rows="5" name="hotel_desc">{{old('hotel_desc', $hotel->desc)}}</textarea>
+                            </div>
+                        </div>
+
+
+
                 </div>
-            </div> --}}
+            </div>
+            <button type="submit" class="btn btn-outline-primary">Save</button>
+            @if($hotel->photo)
+            <button type="submit" class="btn btn-outline-danger" name="delete_photo" value="1">Delete Photo</button>
+            @endif
+            @csrf
+            @method('put')
+            </form>
+
 
 
         </div>
     </div>
-    <button type="submit" class="btn btn-outline-primary">Save</button>
-    @if($hotel->photo)
-    <button type="submit" class="btn btn-outline-danger" name="delete_photo" value="1">Delete Photo</button>
-    @endif
-    @csrf
-    @method('put')
-    </form>
-
-
-
-</div>
-</div>
 </div>
 </div>
 </div>

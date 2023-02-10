@@ -3,6 +3,6 @@
 
     Your order Number {{$ID}} has been shipped!
 
-    Thanks,<br>
-    Fancy Drinks Shop Team
+    Thanks,
+    Oriental agency Team
 </x-mail::message>

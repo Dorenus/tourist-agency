@@ -33,7 +33,7 @@
                                 <div class="type"> {{$hotel->hotelsCountry->title}}</div>
                                 <div class="type">From: {{$hotel->hotelsCountry->start}}</div>
                                 <div class="type">To: {{$hotel->hotelsCountry->end}}</div>
-                                {{dd($hotel->hotelsCountry)}}
+                                {{-- {{dd($hotel->hotelsCountry)}} --}}
 
 
                                 {{-- <span>From: {{$hotel->hotelsCountry->start}} To: {{$hotel->hotelsCountry->end}}</span> --}}

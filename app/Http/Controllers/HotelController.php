@@ -116,8 +116,13 @@ class HotelController extends Controller
             $name = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
             $file = $name. '-' . rand(100000, 999999). '.' . $ext;
             
-            // $Image = Image::make($photo)->pixelate(12);
-            // $Image->save(public_path().'/trucks/'.$file);
+
+            // $manager = new ImageManager(['driver' => 'GD']);
+
+            // $image = $manager->make($photo);
+            // $image->crop(400, 600);
+            // $image->save(public_path().'/hotels/'.$file);
+
 
             $photo->move(public_path().'/hotels', $file);
 
@@ -143,7 +148,7 @@ class HotelController extends Controller
 
         $hotel->save();
 
-        return redirect()->route('hotels-index')->with('okh', 'New hotel was added');
+        return redirect()->route('hotels-index')->with('ok', 'New hotel was added');
 
     }
 

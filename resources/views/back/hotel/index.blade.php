@@ -74,13 +74,13 @@
                             <div class="list-table__buttons">
                                 <a href="{{route('hotels-show', $hotel)}}" class="btn btn-outline-primary">Show</a>
                                 <a href="{{route('hotels-edit', $hotel)}}" class="btn btn-outline-success">Edit</a>
-                                {{-- @if(Auth::user()?->role == 'admin') --}}
+                                @if(Auth::user()?->role == 'admin')
                                 <form action="{{route('hotels-delete', $hotel)}}" method="post">
                                     <button type="submit" class="btn btn-outline-danger">Delete</button>
                                     @csrf
                                     @method('delete')
                                 </form>
-                                {{-- @endif --}}
+                                @endif
                             </div>
                         </div>
                     </li>

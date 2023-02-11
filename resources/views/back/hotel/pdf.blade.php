@@ -41,12 +41,12 @@
         {{$hotel->vol}} %
     </div>
     @endif --}}
-    {{-- <div class="mb-3">
-        <label class="form-label">Drink description</label>
+    <div class="mb-3">
+        <label class="form-label">Hotel description</label>
         <div>
             {{$hotel->desc}}
+        </div>
     </div>
-    </div> --}}
     @if($hotel->photo)
     <div class="mb-3 img">
         <img src="{{asset($hotel->photo)}}">

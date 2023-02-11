@@ -110,10 +110,12 @@ class CountryController extends Controller
     public function destroy(Country $country)
     {
 
-        $country->delete();
-        
-        return redirect()->route('countries-index')->with('not', 'Country was deleted');
-                // return redirect()->back()->with('not', 'Type has drinks.');
+
+        if (!$country->countryHotels()->count()) {
+            $country->delete();
+            return redirect()->route('countries-index')->with('ok', 'Country was deleted');
+        }
+        return redirect()->back()->with('not', 'Country has hotels.');
     }
 }
 

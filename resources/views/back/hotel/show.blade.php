@@ -13,31 +13,45 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="mb-3">
-                                    <label class="form-label">Hotel name</label>
+                                    <label class="form-label" style="font-weight:bold">Hotel name: </label>
+
                                     {{$hotel->title}}
                                 </div>
                             </div>
 
                             <div class="col-12">
                                 <div class="mb-3">
-                                    <label class="form-label">Country</label>
+                                    <label class="form-label" style="font-weight:bold">Country: </label>
+
                                     {{$hotel->hotelsCountry?->title}}
                                 </div>
                             </div>
 
                             <div class="col-12">
                                 <div class="mb-3">
-                                    <label class="form-label">Vocation length</label>
+                                    <label class="form-label" style="font-weight:bold">Vocation length: </label>
+
                                     {{$hotel->length}} days
                                 </div>
                             </div>
 
                             <div class="col-12">
                                 <div class="mb-3">
-                                    <label class="form-label">Hotel price</label>
+                                    <label class="form-label" style="font-weight:bold">Hotel price: </label>
+
                                     {{$hotel->price}} Eur
                                 </div>
                             </div>
+
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <label class="form-label" style="font-weight:bold">Hotel description: </label>
+                                    <div>
+                                        {{$hotel->desc}}
+                                    </div>
+                                </div>
+                            </div>
+
 
                             {{-- @if($hotel->vol)
                             <div class="col-12">

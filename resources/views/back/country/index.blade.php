@@ -18,7 +18,8 @@
                                     <h3>{{$country->title}}</h3>
                                     <h3>{{$country->season}}</h3>
 
-                                    <span>From: {{$country->startNice}} To: {{$country->endNice}}</span>
+                                    <span>From: {{$country->startNice}}</span>
+                                    <span>To: {{$country->endNice}}</span>
 
 
 
@@ -26,13 +27,14 @@
 
                                 </div>
                                 <div class="list-table__buttons">
-                                    {{-- @if(Auth::user()?->role == 'admin') --}}
+                                    @if(Auth::user()?->role == 'admin')
                                     <a href="{{route('countries-edit', $country)}}" class="btn btn-outline-success">Edit</a>
                                     <form action="{{route('countries-delete', $country)}}" method="post">
                                         <button type="submit" class="btn btn-outline-danger">Delete</button>
                                         @csrf
                                         @method('delete')
                                     </form>
+                                    @endif
 
                                 </div>
                             </div>

@@ -19,14 +19,21 @@ class HotelController extends Controller
     {
  
 
+        if ($request->country_id && $request->country_id != 'all') {
+                $hotels = Hotel::where('country_id', $request->country_id);
+            }
+            else {
+                $hotels = Hotel::where('id', '>', 0);
+            } 
+
         $hotels = match($request->sort ?? '') {
-                'asc_title' => Hotel::orderBy('title'),
-                'desc_title' => Hotel::orderBy('title', 'desc'),
-                'asc_price' => Hotel::orderBy('price'),
-                'desc_price' => Hotel::orderBy('price', 'desc'),
-                'asc_length' => Hotel::orderBy('length'),
-                'desc_length' => Hotel::orderBy('length', 'desc'),
-                default => Hotel::where('id', '>', 0)
+                'asc_title' => $hotels->orderBy('title'),
+                'desc_title' => $hotels->orderBy('title', 'desc'),
+                'asc_price' => $hotels->orderBy('price'),
+                'desc_price' => $hotels->orderBy('price', 'desc'),
+                'asc_length' => $hotels->orderBy('length'),
+                'desc_length' => $hotels->orderBy('length', 'desc'),
+                default => $hotels
             };
         
             $hotels = $hotels->get();
@@ -49,6 +56,8 @@ class HotelController extends Controller
         // $hotels = Hotel::all()->sortBy('title');
         // $hotels = Hotel::all();
 
+        $countries = Country::all()->sortBy('title');
+
 
         return view('back.hotel.index', [
             'hotels' => $hotels,
@@ -56,8 +65,8 @@ class HotelController extends Controller
             'sortShow' => isset(Hotel::SORT[$request->sort]) ? $request->sort : '',
             // 'perPageSelect' => Drink::PER_PAGE,
             // 'perPageShow' => $perPageShow,
-            // 'types' => $types,
-            // 'typeShow' => $request->type_id ? $request->type_id : '',
+            'countries' => $countries,
+            'countryShow' => $request->country_id ? $request->country_id : '',
             // 's' => $request->s ?? ''
         ]);
 

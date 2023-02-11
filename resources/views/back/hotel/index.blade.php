@@ -25,6 +25,19 @@
                                         </select>
                                     </div>
                                 </div>
+
+                                <div class="col-2">
+                                    <div class="mb-3">
+                                        <label class="form-label">Countries</label>
+                                        <select class="form-select" name="country_id">
+                                            <option value="all">All</option>
+                                            @foreach($countries as $country)
+                                            <option value="{{$country->id}}" @if($country->id == $countryShow) selected @endif>{{$country->title}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
                                 <div class="col-4">
                                     <div class="head-buttons">
                                         <button type="submit" class="btn btn-outline-primary mt-3">Show</button>

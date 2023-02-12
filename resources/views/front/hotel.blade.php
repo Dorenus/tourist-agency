@@ -24,17 +24,37 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="bottom">
+                                <div class="bottom mt-4">
                                     <div class="info">
-                                        <div class="type"> {{$hotel->hotelsCountry->title}}</div>
-                                        <div class="size"> {{$hotel->length}} days</div>
-                                        <span>From: {{$hotel->hotelsCountry->startNice}} To: {{$hotel->hotelsCountry->endNice}}</span>
+                                        <div class="type" style="font-size: 20px; font-weight:bold"> {{$hotel->hotelsCountry->title}}</div>
+                                        <div class=" size" style="font-size: 16px; font-weight:bold"> {{$hotel->length}} days</div>
+                                        <span>From: {{$hotel->hotelsCountry->start}} To: {{$hotel->hotelsCountry->end}}</span>
 
                                     </div>
                                     <div class="buy">
                                         <div class="price"> {{$hotel->price}} Eur</div>
-                                        <button type="submit" class="btn btn-outline-primary">Add</button>
+                                        <form action="{{route('add-to-cart')}}" method="post">
+                                            <button type="submit" class="btn btn-outline-primary">Add to cart</button>
+                                            <input type="number" min="1" name="count" value="1">
+                                            <input type="hidden" name="product" value="{{$hotel->id}}">
+                                            @csrf
+                                        </form>
+
+                                        {{-- <button type="submit" class="btn btn-outline-primary">Add</button> --}}
                                     </div>
+
+                                    {{-- @if(Auth::user()?->name) --}}
+                                    {{-- @if(Auth::user()?->role == 'admin') --}}
+
+
+                                    {{-- <form action="{{route('add-to-cart')}}" method="post">
+                                    <button type="submit" class="btn btn-outline-primary">Add</button>
+                                    <input type="number" min="1" name="count" value="1">
+                                    <input type="hidden" name="product" value="{{$hotel->id}}">
+                                    @csrf
+                                    </form>
+                                    @endif --}}
+
                                 </div>
                             </div>
                         </div>

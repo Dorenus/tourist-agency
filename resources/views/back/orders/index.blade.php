@@ -22,7 +22,7 @@
                                     <ul class="list-group">
                                         @foreach($order->hotels->drinks as $hotel)
                                         <li class="list-group-item">
-                                            {{$hotel->title}} X {{$hotel->count}}
+                                            {{$hotel->title}} X {{$hotel->count}} packages
                                         </li>
                                         @endforeach
                                     </ul>

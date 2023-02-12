@@ -38,13 +38,13 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        // $order->status = 1;
-        // $order->save();
+        $order->status = 1;
+        $order->save();
         // $to = User::where('id', 'user_id')->get()[];
         // $to = User::where('id', 'user_id')->first();
         $to = User::find($order->user_id);
         Mail::to($to)->send(new OrderShipped($order));
-        return redirect()->back();
+        return redirect()->back()->with('ok', 'The order is confirmed');
     }
 
     /**
@@ -59,6 +59,6 @@ class OrderController extends Controller
             return redirect()->back()->with('not', 'You can not delete unfinished orders');
         }
         $order->delete();
-        return redirect()->back();
+        return redirect()->back()->with('not', 'The order is deleted');
     }
 }

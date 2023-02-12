@@ -42,7 +42,7 @@ class FrontController extends Controller
         $id = (int) $request->product;
         $count = (int) $request->count;
         $cart->add($id, $count);
-        return redirect()->back();
+        return redirect()->back()->with('ok', 'Reservation was added');
     }
 
     public function cart(CartService $cart)
@@ -76,7 +76,7 @@ class FrontController extends Controller
 
         $cart->empty();
 
-        return redirect()->route('start');
+        return redirect()->route('start')->with('ok', 'You have made an order');
     }
 
 }

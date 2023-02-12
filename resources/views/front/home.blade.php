@@ -28,9 +28,9 @@
                                     </div>
                                 </a>
 
-                                <div class="size"> {{$hotel->length}} days</div>
+                                <div class="size mt-2" style="font-style:italic; font-size:16px"> {{$hotel->length}} days</div>
                                 <div class="price"> {{$hotel->price}} Eur</div>
-                                <div class="type"> {{$hotel->hotelsCountry->title}}</div>
+                                <div class="type" style="font-weight:bold; font-size:16px"> {{$hotel->hotelsCountry->title}}</div>
                                 <div class="type">From: {{$hotel->hotelsCountry->start}}</div>
                                 <div class="type">To: {{$hotel->hotelsCountry->end}}</div>
                                 {{-- {{dd($hotel->hotelsCountry)}} --}}

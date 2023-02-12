@@ -1,8 +1,9 @@
 <x-mail::message>
-    # Order Shipped
+    # Order Confirmation
 
-    Your order Number {{$ID}} has been shipped!
+    Your order Number {{$ID}} has been confirmed!
 
     Thanks,
-    Oriental agency Team
+
+    Oriental travel agency team
 </x-mail::message>

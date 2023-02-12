@@ -8,16 +8,29 @@ use App\Models\Country;
 use App\Models\Order;
 use App\Services\CartService;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+
 
 
 class FrontController extends Controller
 {
-    public function home()
+    public function home(Country $country)
     {
         $hotels = Hotel::all();
 
+        // $countries = Country::all()->sortBy('title');
+
+        
+
+        // $countries = $countries->map(function($t) {
+        //     $t->startNice = Carbon::parse($t->start)->format('F j, Y');
+        //     $t->endNice = Carbon::parse($t->end)->format('F j, Y');
+        //     return $t;
+        // });
+
         return view('front.home', [
-            'hotels' => $hotels
+            'hotels' => $hotels,
+            // 'countries' => $countries
         ]);
     }
 
@@ -42,7 +55,7 @@ class FrontController extends Controller
         $id = (int) $request->product;
         $count = (int) $request->count;
         $cart->add($id, $count);
-        return redirect()->back()->with('ok', 'Reservation was added');
+        return redirect()->back()->with('ok', 'Reservation was added to cart');
     }
 
     public function cart(CartService $cart)
@@ -76,7 +89,7 @@ class FrontController extends Controller
 
         $cart->empty();
 
-        return redirect()->route('start')->with('ok', 'You have made an order');
+        return redirect()->route('start')->with('ok', 'You have confirmed your order');
     }
 
 }

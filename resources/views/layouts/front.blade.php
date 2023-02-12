@@ -27,7 +27,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img class="logo" style="" src="{{asset('img/logo3.png')}}" alt="logo"></a>
+                    <img class="logo2" style="" src="{{asset('img/logoOR2.png')}}" alt="logo"></a>
                 <a class="navbar-brand" href=" {{ url('/') }}"> <img class="logo" style="" src="{{asset('img/banner.png')}}" alt="logo"></a>
 
 

@@ -27,6 +27,8 @@
                                         @endforeach
                                     </ul>
                                 </div>
+                                {{-- @if(Auth::user()?->role == 'admin') --}}
+
                                 <div>
                                     @if($order->status == 0)
                                     <form action="{{route('orders-update', $order)}}" method="post" class="mt-2">
@@ -41,6 +43,7 @@
                                         @method('delete')
                                     </form>
                                 </div>
+                                {{-- @endif --}}
                             </div>
                         </li>
                         @endforeach

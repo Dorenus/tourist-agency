@@ -15,6 +15,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@300;400&family=Sarpanch:wght@400;900&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+
+
+
     <!-- Scripts -->
     @vite(['resources/sass/front/app.scss', 'resources/js/front/app.js'])
 </head>
@@ -23,8 +27,16 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img class="logo" style="" src="{{asset('img/logo3.png')}}" alt="logo">
-                </a>
+                    <img class="logo" style="" src="{{asset('img/logo3.png')}}" alt="logo"></a>
+                <a class="navbar-brand" href=" {{ url('/') }}"> <img class="logo" style="" src="{{asset('img/banner.png')}}" alt="logo"></a>
+
+
+                <a class="navbar-brand" href=" {{ url('/') }}"><img class="logo" style="" src="{{asset('img/loglong.jpg')}}" alt="logo"></a>
+
+
+                <a class="navbar-brand" href=" {{ url('/') }}"><img class="logo" style="" src="{{asset('img/banner2.png')}}" alt="logo"></a>
+
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -80,7 +92,7 @@
                                     <svg class="cart">
                                         <use xlink:href="#cart2"></use>
                                     </svg>
-                                    <span class="count" style="top: 3px; left: 5px">{{$cart->count}}</span>
+                                    <span class="count" style="top: 3px; left: 5px; font-weight:bold; ">{{$cart->count}}</span>
 
                                     <span>{{$cart->total}} eur </span>
                                 </div>

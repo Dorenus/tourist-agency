@@ -4,7 +4,11 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h2>All countries</h2>
+                    <a style="text-decoration:none; color:black;" href="{{ url('/') }}">
+
+                        <h2 class="text-center">All countries</h2>
+                    </a>
+
                 </div>
                 <div class="card-body">
                     <ul class="list-group">

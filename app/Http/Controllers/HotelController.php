@@ -17,7 +17,8 @@ class HotelController extends Controller
 
     public function index(Request $request)
     {
- 
+         
+        if (!$request->s) {
 
         if ($request->country_id && $request->country_id != 'all') {
                 $hotels = Hotel::where('country_id', $request->country_id);
@@ -35,9 +36,23 @@ class HotelController extends Controller
                 'desc_length' => $hotels->orderBy('length', 'desc'),
                 default => $hotels
             };
-        
             $hotels = $hotels->get();
+        }
+        
+            // $hotels = $hotels->get();
 
+         else {
+             $s = explode(' ', $request->s);
+             if ( count($s) == 1) {
+                $hotels = Hotel::where('title', 'like', '%'.$request->s.'%')->get();
+            }
+            else {
+                $hotels = Hotel::where('title', 'like', '%'.$s[0].'%'.$s[1].'%')
+                ->orWhere('title', 'like', '%'.$s[1].'%'.$s[0].'%')
+                ->get();
+            }
+        
+        }
 
 
         //  $hotels= Hotel::all();
@@ -67,7 +82,7 @@ class HotelController extends Controller
             // 'perPageShow' => $perPageShow,
             'countries' => $countries,
             'countryShow' => $request->country_id ? $request->country_id : '',
-            // 's' => $request->s ?? ''
+            's' => $request->s ?? ''
         ]);
 
     }

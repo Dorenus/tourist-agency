@@ -98,8 +98,17 @@ class CountryController extends Controller
                 return redirect()->back()->withErrors($validator);
             }
 
+        // $start = Carbon::parse($request->start);
+        // $end = Carbon::parse($request->start)->addDays($request->length);
 
-
+        // Country::insert([
+        //     'title' => $request->title,
+        //     'season' => $request->season,
+        //     'start' => $start,
+        //     'end' => $end,
+        // ]);
+        // $country->startNice = $start;
+        // $country->startNice = $end;
         $country->title = $request->title;
         $country->season = $request->season;
         $country->save();

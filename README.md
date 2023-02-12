@@ -9,9 +9,9 @@ The project has such features:
 
 - CRUD 
 - MariaDB usage
-- User acess to functionality acording to his role
+- User access to functionality acording to his role
 - SSR rendering
-- JSON usage in oders procesing
+- JSON usage in oders processing
 
 
 ## Authers

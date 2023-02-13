@@ -18,6 +18,14 @@ class FrontController extends Controller
     {
         $hotels = Hotel::all();
 
+        $hotels = $hotels->map(function($t) {
+            $t->startNice = Carbon::parse($t->hotel_start)->format('Y.m.d');
+            $t->endNice = Carbon::parse($t->hotel_end)->format('Y.m.d');
+            // $t->startFront = Carbon::parse($t->start)->format(''F j, Y'');
+            // $t->endFront = Carbon::parse($t->end)->format(''F j, Y'');
+            return $t;
+        });
+
         // $countries = Country::all()->sortBy('title');
 
         

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Intervention\Image\ImageManager;
+use Carbon\Carbon;
 
 
 class HotelController extends Controller
@@ -149,7 +150,13 @@ class HotelController extends Controller
 
         }
 
-    
+        $hotel_start = Carbon::parse($request->hotel_start);
+        $hotel_end = Carbon::parse($request->hotel_start)->addDays($request->length);
+
+        
+        // if($hotel_start<)
+
+        // dump($request);
 
         // $type = Type::find($request->type_id);
         // $vol = $type->is_alk ? $request->drink_vol : null;
@@ -159,9 +166,32 @@ class HotelController extends Controller
         $hotel->length = $request->length;
         $hotel->price = $request->price;
         $hotel->desc = $request->hotel_desc;
+        $hotel->hotel_start = $hotel_start;
+        $hotel->hotel_end = $hotel_end;
         // $hotel->photo = $request->photo;
 
+        $x = $hotel->hotelsCountry->start;
+        $y = $hotel->hotel_start;
+        $x2 = $hotel->hotelsCountry->end;
+        $y2 = $hotel->hotel_end;
+
+
+        if($x > $y || $x2 < $y2) {
+               return redirect()->route('hotels-create')->with('not', 'Hotel reservation out of season range');
+        }
+
+        // if($x > $y) {
+        //     return redirect()->route('hotels-index')->with('not', 'Out of range');
+        // } if ( $x < $y) {
+        //     return redirect()->route('hotels-index')->with('not', 'Out of range');
+        // }
+        if(($hotel->hotelsCountry->start) > ($hotel->hotel_start)) {
+            return redirect()->route('hotels-index')->with('not', 'Out of range');
+        }
+
+
         $hotel->save();
+
 
         return redirect()->route('hotels-index')->with('ok', 'New hotel was added');
 
@@ -235,30 +265,30 @@ class HotelController extends Controller
             // $hotel->photo = "any text";
 
         }
-        // if ($request->file('photo')) {
-        //     $photo = $request->file('photo');
-
-        //     $ext = $photo->getClientOriginalExtension();
-        //     $name = pathinfo($photo->getClientOriginalName(), PATHINFO_FILENAME);
-        //     $file = $name. '-' . rand(100000, 999999). '.' . $ext;
-            
-        //     // $Image = Image::make($photo)->pixelate(12);
-        //     // $Image->save(public_path().'/trucks/'.$file);
-
-        //     if ($hotel->photo) {
-        //         $hotel->deletePhoto();
-        //     }
-        //     $photo->move(public_path().'/drinks', $file);
-        //     $hotel->photo = '/drinks/' . $file;
-        // }
+       
+        $hotel_start = Carbon::parse($request->hotel_start);
+        $hotel_end = Carbon::parse($request->hotel_start)->addDays($request->length);
 
         
         $hotel->title = $request->title;
         $hotel->country_id = $request->country_id;
         $hotel->length = $request->length;
         $hotel->price = $request->price;
-        // $hotel->photo = $request->photo;
         $hotel->desc = $request->hotel_desc;
+        $hotel->hotel_start = $hotel_start;
+        $hotel->hotel_end = $hotel_end;
+       
+
+        $x = $hotel->hotelsCountry->start;
+        $y = $hotel->hotel_start;
+        $x2 = $hotel->hotelsCountry->end;
+        $y2 = $hotel->hotel_end;
+
+
+        if($x > $y || $x2 < $y2) {
+               return redirect()->back()->with('not', 'Hotel reservation out of season range');
+        }
+
      
 
         $hotel->save();

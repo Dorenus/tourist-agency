@@ -32,8 +32,8 @@
 
                                 <div class="price"> {{$hotel->price}} Eur</div>
                                 <div class="type" style="font-weight:bold; font-size:16px"> {{$hotel->hotelsCountry->title}}</div>
-                                <div class="type">From: {{$hotel->hotelsCountry->start}}</div>
-                                <div class="type">To: {{$hotel->hotelsCountry->end}}</div>
+                                <div class="type">From: {{$hotel->startNice}}</div>
+                                <div class="type">To: {{$hotel->endNice}}</div>
                                 {{-- {{dd($hotel->hotelsCountry)}} --}}
 
 

@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->decimal('price', 6, 2)->unsigned();
+            $table->date('hotel_start');
+            $table->date('hotel_end');
             $table->string('photo', 200)->nullable();
             $table->mediumInteger('length')->unsigned();
             $table->unsignedBigInteger('country_id');

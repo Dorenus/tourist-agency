@@ -25,7 +25,10 @@
                                             <input type="hidden" name="ids[]" value="{{$hotel->id}}">
                                         </div>
                                         <div class="price"> {{$hotel->sum}} Eur</div>
-                                        <div class="type"> {{$hotel->hotelsCountry->title}}</div>
+                                        <div class="type" style="font-size:16px;"> {{$hotel->hotelsCountry->title}}</div>
+                                        <div class="type" style="font-size:16px; color:crimson;font-weight:bold"> {{$hotel->title}}</div>
+
+
 
                                         <div class="smallimg">
                                             @if($hotel->photo)

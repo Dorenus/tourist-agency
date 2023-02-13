@@ -37,6 +37,15 @@
 
                             <div class="col-12">
                                 <div class="mb-3">
+                                    <label class="form-label" style="font-weight:bold">Vocation start and end: </label>
+
+                                    From {{$hotel->hotel_start}} to {{$hotel->hotel_end}}
+
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="mb-3">
                                     <label class="form-label" style="font-weight:bold">Hotel price: </label>
 
                                     {{$hotel->price}} Eur

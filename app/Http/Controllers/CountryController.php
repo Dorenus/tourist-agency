@@ -57,6 +57,12 @@ class CountryController extends Controller
         
         $start = Carbon::parse($request->start);
         $end = Carbon::parse($request->start)->addDays($request->length);
+
+        $startNice = Carbon::parse($country->start)->format('F j, Y');
+        $endNice = Carbon::parse($country->end)->format('F j, Y');
+
+        // $country->end = $end;
+        // $country->start = $start;
         
         // $country = $country->map(function($t) {
         //     $t->startNice = Carbon::parse($t->start)->format('F j, Y');
@@ -69,6 +75,8 @@ class CountryController extends Controller
             'season' => $request->season,
             'start' => $start,
             'end' => $end,
+            // 'startNice' => $startNice,
+            // 'endNice' => $endNice,
         ]);
 
         // $country->save();

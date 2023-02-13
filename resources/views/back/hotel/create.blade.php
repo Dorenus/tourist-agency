@@ -33,6 +33,14 @@
 
                                 <div class="col-3">
                                     <div class="mb-3">
+                                        <label class="form-label">Check In</label>
+                                        <input type="date" name="hotel_start" class="form-control" placeholder="start" value="{{old('start')}}">
+                                    </div>
+                                </div>
+
+
+                                <div class="col-3">
+                                    <div class="mb-3">
                                         <label class="form-label">Length</label>
                                         <input type="text" class="form-control" name="length" value="{{old('length')}}">
                                     </div>

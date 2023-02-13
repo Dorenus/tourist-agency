@@ -32,7 +32,7 @@
                                         <div class="info">
                                             <div class="type" style="font-size: 20px; font-weight:bold"> {{$hotel->hotelsCountry->title}}</div>
                                             <div class=" size" style="font-size: 16px; font-weight:bold"> {{$hotel->length}} days</div>
-                                            <span>From: {{$hotel->hotelsCountry->start}} To: {{$hotel->hotelsCountry->end}}</span>
+                                            <span>From: {{$hotel->hotel_start}} to: {{$hotel->hotel_end}}</span>
 
                                         </div>
                                         <div class="buy">
